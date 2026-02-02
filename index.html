@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Моя визитка</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1f2933, #0b0f14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.bg-blur {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #7c3aed, #06b6d4);
+  filter: blur(120px);
+  opacity: 0.4;
+  top: -100px;
+  left: -100px;
+  z-index: 0;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  border-radius: 24px;
+  padding: 32px 26px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  animation: fadeUp 0.8s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  background-image: url('https://i.postimg.cc/htXkXYTF/IMG-20260202-093048-109.jpg');
+  background-size: cover;
+  background-position: center;
+  border: 3px solid rgba(255,255,255,0.25);
+  box-shadow: 0 0 25px rgba(124,58,237,0.5);
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+p {
+  font-size: 14px;
+  opacity: 0.75;
+  margin-bottom: 24px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.links a {
+  text-decoration: none;
+  color: #fff;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.05));
+  backdrop-filter: blur(6px);
+  transition: 0.25s ease;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.links a:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+footer {
+  margin-top: 22px;
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+  </style>
+</head>
+<body>  <div class="bg-blur"></div>  <div class="card">
+    <div class="avatar"></div>
+    <h1>Даурен</h1>
+    <p>Личная онлайн‑визитка</p><div class="links">
+  <a href="https://t.me/Samsabas" target="_blank">📨 Telegram</a>
+  <a href="https://vk.com/dakoq" target="_blank">👤 ВКонтакте</a>
+  <a href="https://discord.gg/dako6666" target="_blank">🎮 Discord</a>
+  <a href="https://youtube.com/@dakoqq" target="_blank">▶ YouTube</a>
+  <a href="https://wa.me/77089293961" target="_blank">💬 WhatsApp</a>
+  <a href="https://instagram.com/dakoqq" target="_blank">📸 Instagram</a>
+  <a href="https://tiktok.com/@dakoqq" target="_blank">🎵 TikTok</a>
+  <a href="#" onclick="alert('Скоро будет 👀')">✨ Что-то ещё</a>
+</div>
+
+<footer>© 2026 Не официально</footer>
+
+  </div></body>
+</html>
