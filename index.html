@@ -1,129 +1,150 @@
-<!DOCTYPE html><html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Моя визитка</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }body {
-  min-height: 100vh;
-  background: radial-gradient(circle at top, #1f2933, #0b0f14);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  overflow: hidden;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя Визитка</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --accent-color: #38bdf8;
+        }
 
-.bg-blur {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: linear-gradient(135deg, #7c3aed, #06b6d4);
-  filter: blur(120px);
-  opacity: 0.4;
-  top: -100px;
-  left: -100px;
-  z-index: 0;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-.card {
-  position: relative;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(18px);
-  border-radius: 24px;
-  padding: 32px 26px;
-  width: 100%;
-  max-width: 380px;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-  animation: fadeUp 0.8s ease;
-}
+        .container {
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            padding: 20px;
+        }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-color);
+            margin-bottom: 15px;
+        }
 
-.avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin: 0 auto 18px;
-  background-image: url('https://i.postimg.cc/htXkXYTF/IMG-20260202-093048-109.jpg');
-  background-size: cover;
-  background-position: center;
-  border: 3px solid rgba(255,255,255,0.25);
-  box-shadow: 0 0 25px rgba(124,58,237,0.5);
-}
+        h1 { font-size: 1.5rem; margin-bottom: 5px; }
+        p { color: #94a3b8; margin-bottom: 25px; }
 
-h1 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
+        .links { display: flex; flex-direction: column; gap: 15px; }
 
-p {
-  font-size: 14px;
-  opacity: 0.75;
-  margin-bottom: 24px;
-}
+        .link-card {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s, background 0.2s;
+            border: 1px solid #334155;
+        }
 
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
+        .link-card:hover {
+            transform: translateY(-3px);
+            background: #334155;
+        }
 
-.links a {
-  text-decoration: none;
-  color: #fff;
-  padding: 14px 16px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.05));
-  backdrop-filter: blur(6px);
-  transition: 0.25s ease;
-  font-size: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
+        .link-card i {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            width: 30px;
+            color: var(--accent-color);
+        }
 
-.links a:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-}
+        .nav-btn {
+            margin-top: 30px;
+            display: inline-block;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 1px solid var(--accent-color);
+        }
 
-footer {
-  margin-top: 22px;
-  font-size: 12px;
-  opacity: 0.5;
-}
-
-  </style>
+        /* Стили для страницы "Обо мне" (скрыта по умолчанию) */
+        #about-page { display: none; }
+    </style>
 </head>
-<body>  <div class="bg-blur"></div>  <div class="card">
-    <div class="avatar"></div>
-    <h1>Даурен</h1>
-    <p>Личная онлайн‑визитка</p><div class="links">
-  <a href="https://t.me/Samsabas" target="_blank">📨 Telegram</a>
-  <a href="https://vk.com/dakoq" target="_blank">👤 ВКонтакте</a>
-  <a href="https://discord.gg/dako6666" target="_blank">🎮 Discord</a>
-  <a href="https://youtube.com/@dakoqq" target="_blank">▶ YouTube</a>
-  <a href="https://wa.me/77089293961" target="_blank">💬 WhatsApp</a>
-  <a href="https://instagram.com/dakoqq" target="_blank">📸 Instagram</a>
-  <a href="https://tiktok.com/@dakoqq" target="_blank">🎵 TikTok</a>
-  <a href="#" onclick="alert('Скоро будет 👀')">✨ Что-то ещё</a>
-</div>
+<body>
 
-<footer>© 2026 Не официально</footer>
+    <div id="main-page" class="container">
+        <img src="https://via.placeholder.com/100" alt="Avatar" class="profile-img">
+        <h1>Твое Имя</h1>
+        <p>@твой_юзернейм</p>
 
-  </div></body>
+        <div class="links">
+            <a href="tel:+79991234567" class="link-card">
+                <i class="fa-solid fa-phone"></i>
+                <span>Позвонить мне</span>
+            </a>
+
+            <a href="https://t.me/твой_юзер" target="_blank" class="link-card">
+                <i class="fa-brands fa-telegram"></i>
+                <span>Telegram</span>
+            </a>
+
+            <a href="https://wa.me/79991234567" target="_blank" class="link-card">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+
+            <a href="https://youtube.com/@канал" target="_blank" class="link-card">
+                <i class="fa-brands fa-youtube"></i>
+                <span>YouTube</span>
+            </a>
+
+            <a href="https://instagram.com/твой_юзер" target="_blank" class="link-card">
+                <i class="fa-brands fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+            
+            <a href="https://tiktok.com/@твой_юзер" target="_blank" class="link-card">
+                <i class="fa-brands fa-tiktok"></i>
+                <span>TikTok</span>
+            </a>
+        </div>
+
+        <a href="#" class="nav-btn" onclick="togglePage()">Узнать больше обо мне →</a>
+    </div>
+
+    <div id="about-page" class="container">
+        <h1>Обо мне</h1>
+        <div class="link-card" style="text-align: left; flex-direction: column; align-items: flex-start;">
+            <p style="color: white;">Привет! Здесь ты можешь написать свою историю. Например, чем ты занимаешься, какие у тебя хобби или профессиональные навыки.</p>
+            <p style="color: white;">Я создаю крутой контент и всегда открыт для предложений!</p>
+        </div>
+        <br>
+        <a href="#" class="nav-btn" onclick="togglePage()">← Назад к ссылкам</a>
+    </div>
+
+    <script>
+        function togglePage() {
+            const main = document.getElementById('main-page');
+            const about = document.getElementById('about-page');
+            if (main.style.display === 'none') {
+                main.style.display = 'block';
+                about.style.display = 'none';
+            } else {
+                main.style.display = 'none';
+                about.style.display = 'block';
+            }
+        }
+    </script>
+</body>
 </html>
