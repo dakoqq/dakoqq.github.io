@@ -3,88 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Моя Визитка</title>
+    <title>Моя Неоновая Визитка</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-color: #f8fafc;
-            --accent-color: #38bdf8;
+            --bg-dark: #05050a;
+            --glass-bg: rgba(20, 20, 30, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #8b949e;
+            --neon-1: #8a2be2; /* Фиолетовый неон */
+            --neon-2: #00d2ff; /* Голубой неон */
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ИМИТАЦИЯ ШЕЙДЕРОВ (Анимированный фон) */
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            animation: floatShader 10s infinite alternate ease-in-out;
+        }
+
+        body::before {
+            background: var(--neon-1);
+            top: 10%;
+            left: 20%;
+            opacity: 0.4;
+        }
+
+        body::after {
+            background: var(--neon-2);
+            bottom: 10%;
+            right: 20%;
+            opacity: 0.3;
+            animation-delay: -5s;
+        }
+
+        @keyframes floatShader {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.2); }
+        }
+
+        /* АНИМАЦИЯ ПОЯВЛЕНИЯ */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* АНИМАЦИЯ "ДЫХАНИЯ" */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px var(--neon-1); }
+            50% { box-shadow: 0 0 30px var(--neon-2); transform: scale(1.02); }
+            100% { box-shadow: 0 0 15px var(--neon-1); }
         }
 
         .container {
             width: 90%;
-            max-width: 400px;
+            max-width: 420px;
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
+            animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
 
         .profile-img {
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
-            border: 3px solid var(--accent-color);
+            border: 2px solid transparent;
+            background: linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box, 
+                        linear-gradient(45deg, var(--neon-1), var(--neon-2)) border-box;
             margin-bottom: 15px;
+            animation: pulseGlow 4s infinite alternate ease-in-out;
+            object-fit: cover;
         }
 
-        h1 { font-size: 1.5rem; margin-bottom: 5px; }
-        p { color: #94a3b8; margin-bottom: 25px; }
+        h1 { font-size: 1.8rem; margin-bottom: 5px; letter-spacing: 1px; }
+        p { color: var(--text-muted); margin-bottom: 30px; font-weight: 300; }
 
-        .links { display: flex; flex-direction: column; gap: 15px; }
+        .links { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+        }
 
+        /* ЭФФЕКТ СТЕКЛА ДЛЯ КНОПОК */
         .link-card {
-            background: var(--card-bg);
-            padding: 15px;
-            border-radius: 12px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 16px;
+            border-radius: 16px;
             text-decoration: none;
             color: white;
             display: flex;
             align-items: center;
-            transition: transform 0.2s, background 0.2s;
-            border: 1px solid #334155;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            opacity: 0; /* Для анимации */
+            animation: fadeUp 0.6s forwards;
         }
 
+        /* Задержка появления для каждой кнопки (эффект лесенки) */
+        .links a:nth-child(1) { animation-delay: 0.2s; }
+        .links a:nth-child(2) { animation-delay: 0.3s; }
+        .links a:nth-child(3) { animation-delay: 0.4s; }
+        .links a:nth-child(4) { animation-delay: 0.5s; }
+        .links a:nth-child(5) { animation-delay: 0.6s; }
+        .links a:nth-child(6) { animation-delay: 0.7s; }
+
         .link-card:hover {
-            transform: translateY(-3px);
-            background: #334155;
+            transform: translateY(-5px) scale(1.03);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--neon-2);
+            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.2), inset 0 0 10px rgba(138, 43, 226, 0.2);
         }
 
         .link-card i {
             font-size: 1.5rem;
             margin-right: 15px;
             width: 30px;
-            color: var(--accent-color);
+            background: -webkit-linear-gradient(45deg, var(--neon-1), var(--neon-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: transform 0.3s;
+        }
+
+        .link-card:hover i {
+            transform: rotate(10deg) scale(1.2);
         }
 
         .nav-btn {
-            margin-top: 30px;
+            margin-top: 35px;
             display: inline-block;
-            color: var(--accent-color);
+            color: var(--text-main);
             text-decoration: none;
-            font-weight: bold;
-            border-bottom: 1px solid var(--accent-color);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--neon-1);
+            padding-bottom: 5px;
+            transition: all 0.3s;
+            opacity: 0;
+            animation: fadeUp 0.6s forwards;
+            animation-delay: 0.9s;
         }
 
-        /* Стили для страницы "Обо мне" (скрыта по умолчанию) */
+        .nav-btn:hover {
+            color: var(--neon-2);
+            border-color: var(--neon-2);
+            text-shadow: 0 0 8px var(--neon-2);
+        }
+
         #about-page { display: none; }
     </style>
 </head>
 <body>
 
     <div id="main-page" class="container">
-        <img src="https://via.placeholder.com/100" alt="Avatar" class="profile-img">
+        <img src="https://via.placeholder.com/110" alt="Avatar" class="profile-img">
         <h1>Твое Имя</h1>
         <p>@твой_юзернейм</p>
 
@@ -120,29 +213,39 @@
             </a>
         </div>
 
-        <a href="#" class="nav-btn" onclick="togglePage()">Узнать больше обо мне →</a>
+        <a href="#" class="nav-btn" onclick="togglePage(event)">Узнать больше →</a>
     </div>
 
     <div id="about-page" class="container">
         <h1>Обо мне</h1>
-        <div class="link-card" style="text-align: left; flex-direction: column; align-items: flex-start;">
-            <p style="color: white;">Привет! Здесь ты можешь написать свою историю. Например, чем ты занимаешься, какие у тебя хобби или профессиональные навыки.</p>
-            <p style="color: white;">Я создаю крутой контент и всегда открыт для предложений!</p>
+        <div class="link-card" style="text-align: left; flex-direction: column; align-items: flex-start; animation-delay: 0.1s; cursor: default;">
+            <p style="color: var(--text-main); margin-bottom: 10px;">Привет! Здесь ты можешь написать свою историю. Чем ты занимаешься, какие у тебя хобби.</p>
+            <p style="color: var(--text-muted); margin-bottom: 0;">Я создаю крутой контент и всегда открыт для предложений!</p>
         </div>
         <br>
-        <a href="#" class="nav-btn" onclick="togglePage()">← Назад к ссылкам</a>
+        <a href="#" class="nav-btn" style="animation-delay: 0.3s;" onclick="togglePage(event)">← Назад</a>
     </div>
 
     <script>
-        function togglePage() {
+        function togglePage(event) {
+            event.preventDefault(); // Предотвращаем прыжок страницы вверх
             const main = document.getElementById('main-page');
             const about = document.getElementById('about-page');
+            
             if (main.style.display === 'none') {
                 main.style.display = 'block';
                 about.style.display = 'none';
+                // Перезапуск анимации
+                main.style.animation = 'none';
+                main.offsetHeight; /* триггер reflow */
+                main.style.animation = null; 
             } else {
                 main.style.display = 'none';
                 about.style.display = 'block';
+                // Перезапуск анимации
+                about.style.animation = 'none';
+                about.offsetHeight; /* триггер reflow */
+                about.style.animation = null;
             }
         }
     </script>
