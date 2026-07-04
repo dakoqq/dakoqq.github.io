@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Моя Неоновая Визитка </title>
+    <title>Моя Неоновая Визитка</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -12,12 +12,11 @@
             --glass-border: rgba(255, 255, 255, 0.08);
             --text-main: #f8fafc;
             --text-muted: #8b949e;
-            --neon-1: #8a2be2; /* Фиолетовый неон */
-            --neon-2: #00d2ff; /* Голубой неон */
+            --neon-1: #8a2be2;
+            --neon-2: #00d2ff;
         }
-
         body {
-           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-main);
             margin: 0;
@@ -28,8 +27,6 @@
             overflow-x: hidden;
             position: relative;
         }
-
-        /* ИМИТАЦИЯ ШЕЙДЕРОВ (Анимированный фон) */
         body::before, body::after {
             content: '';
             position: fixed;
@@ -40,14 +37,12 @@
             z-index: -1;
             animation: floatShader 10s infinite alternate ease-in-out;
         }
-
         body::before {
             background: var(--neon-1);
             top: 10%;
             left: 20%;
             opacity: 0.4;
         }
-
         body::after {
             background: var(--neon-2);
             bottom: 10%;
@@ -55,25 +50,19 @@
             opacity: 0.3;
             animation-delay: -5s;
         }
-
         @keyframes floatShader {
             0% { transform: translate(0, 0) scale(1); }
             100% { transform: translate(50px, 50px) scale(1.2); }
         }
-
-        /* АНИМАЦИЯ ПОЯВЛЕНИЯ */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        /* АНИМАЦИЯ "ДЫХАНИЯ" */
         @keyframes pulseGlow {
             0% { box-shadow: 0 0 15px var(--neon-1); }
             50% { box-shadow: 0 0 30px var(--neon-2); transform: scale(1.02); }
             100% { box-shadow: 0 0 15px var(--neon-1); }
         }
-
         .container {
             width: 90%;
             max-width: 420px;
@@ -81,7 +70,6 @@
             padding: 30px 20px;
             animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
-
         .profile-img {
             width: 110px;
             height: 110px;
@@ -93,17 +81,13 @@
             animation: pulseGlow 4s infinite alternate ease-in-out;
             object-fit: cover;
         }
-
         h1 { font-size: 1.8rem; margin-bottom: 5px; letter-spacing: 1px; }
         p { color: var(--text-muted); margin-bottom: 30px; font-weight: 300; }
-
         .links { 
             display: flex; 
             flex-direction: column; 
             gap: 15px; 
         }
-
-        /* ЭФФЕКТ СТЕКЛА ДЛЯ КНОПОК */
         .link-card {
             background: var(--glass-bg);
             backdrop-filter: blur(12px);
@@ -116,25 +100,21 @@
             align-items: center;
             border: 1px solid var(--glass-border);
             transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            opacity: 0; /* Для анимации */
+            opacity: 0;
             animation: fadeUp 0.6s forwards;
         }
-
-        /* Задержка появления для каждой кнопки (эффект лесенки) */
         .links a:nth-child(1) { animation-delay: 0.2s; }
         .links a:nth-child(2) { animation-delay: 0.3s; }
         .links a:nth-child(3) { animation-delay: 0.4s; }
         .links a:nth-child(4) { animation-delay: 0.5s; }
         .links a:nth-child(5) { animation-delay: 0.6s; }
         .links a:nth-child(6) { animation-delay: 0.7s; }
-
         .link-card:hover {
             transform: translateY(-5px) scale(1.03);
             background: rgba(255, 255, 255, 0.1);
             border-color: var(--neon-2);
             box-shadow: 0 10px 20px rgba(0, 210, 255, 0.2), inset 0 0 10px rgba(138, 43, 226, 0.2);
         }
-
         .link-card i {
             font-size: 1.5rem;
             margin-right: 15px;
@@ -144,11 +124,9 @@
             -webkit-text-fill-color: transparent;
             transition: transform 0.3s;
         }
-
         .link-card:hover i {
             transform: rotate(10deg) scale(1.2);
         }
-
         .nav-btn {
             margin-top: 35px;
             display: inline-block;
@@ -164,58 +142,47 @@
             animation: fadeUp 0.6s forwards;
             animation-delay: 0.9s;
         }
-
         .nav-btn:hover {
             color: var(--neon-2);
             border-color: var(--neon-2);
             text-shadow: 0 0 8px var(--neon-2);
         }
-
         #about-page { display: none; }
     </style>
 </head>
 <body>
-
     <div id="main-page" class="container">
-        <img src="https://postimg.cc/3yGqvKCk" alt="Avatar" class="profile-img">
+        <img src="https://i.postimg.cc/3yGqvKCk/avatar.jpg" alt="Avatar" class="profile-img">
         <h1>dakoqq</h1>
         <p>@dakoqq</p>
-
         <div class="links">
             <a href="tel:+77089293961" class="link-card">
                 <i class="fa-solid fa-phone"></i>
                 <span>Позвонить мне</span>
             </a>
-
             <a href="https://t.me/Samsabas" target="_blank" class="link-card">
                 <i class="fa-brands fa-telegram"></i>
                 <span>Telegram</span>
             </a>
-
             <a href="https://wa.me/77089293961" target="_blank" class="link-card">
                 <i class="fa-brands fa-whatsapp"></i>
                 <span>WhatsApp</span>
             </a>
-
             <a href="https://youtube.com/@dakoqq" target="_blank" class="link-card">
                 <i class="fa-brands fa-youtube"></i>
                 <span>YouTube</span>
             </a>
-
             <a href="https://instagram.com/dakoqq" target="_blank" class="link-card">
                 <i class="fa-brands fa-instagram"></i>
                 <span>Instagram</span>
             </a>
-            
             <a href="https://tiktok.com/@samsabas" target="_blank" class="link-card">
                 <i class="fa-brands fa-tiktok"></i>
                 <span>TikTok</span>
             </a>
         </div>
-
         <a href="#" class="nav-btn" onclick="togglePage(event)">Узнать больше →</a>
     </div>
-
     <div id="about-page" class="container">
         <h1>Обо мне</h1>
         <div class="link-card" style="text-align: left; flex-direction: column; align-items: flex-start; animation-delay: 0.1s; cursor: default;">
@@ -225,26 +192,22 @@
         <br>
         <a href="#" class="nav-btn" style="animation-delay: 0.3s;" onclick="togglePage(event)">← Назад</a>
     </div>
-
     <script>
         function togglePage(event) {
-            event.preventDefault(); // Предотвращаем прыжок страницы вверх
+            event.preventDefault();
             const main = document.getElementById('main-page');
             const about = document.getElementById('about-page');
-            
             if (main.style.display === 'none') {
                 main.style.display = 'block';
                 about.style.display = 'none';
-                // Перезапуск анимации
                 main.style.animation = 'none';
-                main.offsetHeight; /* триггер reflow */
+                main.offsetHeight;
                 main.style.animation = null; 
             } else {
                 main.style.display = 'none';
                 about.style.display = 'block';
-                // Перезапуск анимации
                 about.style.animation = 'none';
-                about.offsetHeight; /* триггер reflow */
+                about.offsetHeight;
                 about.style.animation = null;
             }
         }
